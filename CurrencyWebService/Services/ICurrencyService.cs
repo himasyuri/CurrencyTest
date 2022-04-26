@@ -4,7 +4,7 @@ namespace CurrencyWebService.Services
 {
     public interface ICurrencyService
     {
-        Currency GetCurrency(string currencyCode);
+        Currency GetCurrency(string currCharCode);
 
         List<Currency> GetCurrencyList();
     }

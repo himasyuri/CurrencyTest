@@ -13,7 +13,7 @@ namespace CurrencyWebService.Services
             _memoryCache = memoryCache;
         }
 
-        public Currency GetCurrency(string currencyCode)
+        public Currency GetCurrency(string currCharCode)
         {
             XDocument xml = GetDocument();
             if (xml != null)
@@ -21,16 +21,16 @@ namespace CurrencyWebService.Services
                 Currency currency = new Currency()
                 {
                     CharCode = xml.Elements("ValCurs")?.Elements("Valute")
-                                  .FirstOrDefault(x => x.Element("CharCode")?.Value == currencyCode)
+                                  .FirstOrDefault(x => x.Element("CharCode")?.Value == currCharCode)
                                   ?.Elements("CharCode").FirstOrDefault()?.Value,
                     Nominal = Convert.ToInt32(xml.Elements("ValCurs")?.Elements("Valute")
-                                                 .FirstOrDefault(x => x.Element("CharCode")?.Value == currencyCode)
+                                                 .FirstOrDefault(x => x.Element("CharCode")?.Value == currCharCode)
                                                  ?.Elements("Nominal").FirstOrDefault()?.Value),
                     Name = xml.Elements("ValCurs")?.Elements("Valute")
-                              .FirstOrDefault(x => x.Element("CharCode")?.Value == currencyCode)
+                              .FirstOrDefault(x => x.Element("CharCode")?.Value == currCharCode)
                               ?.Elements("Name").FirstOrDefault()?.Value,
                     Value = Convert.ToDecimal(xml.Elements("ValCurs")?.Elements("Valute")
-                                                 .FirstOrDefault(x => x.Element("CharCode")?.Value == currencyCode)
+                                                 .FirstOrDefault(x => x.Element("CharCode")?.Value == currCharCode)
                                                  ?.Elements("Value").FirstOrDefault()?.Value)
                 };
                 return currency;

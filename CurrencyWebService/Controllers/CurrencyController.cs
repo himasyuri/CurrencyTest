@@ -35,11 +35,11 @@ namespace CurrencyWebService.Controllers
             return Ok(response);
         }
 
-        [Route("Currency/{currencyCode}")]
+        [Route("Currency/{currCharCode}")]
         [HttpGet]
-        public ActionResult GeyCurrency(string currencyCode)
+        public ActionResult GetCurrency(string currCharCode)
         {
-            var result = _currencyService.GetCurrency(currencyCode);
+            var result = _currencyService.GetCurrency(currCharCode);
             return Ok(result);
         }
     }
