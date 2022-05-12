@@ -37,7 +37,7 @@ namespace CurrencyWebService.Controllers
 
         [Route("Currency/{currCharCode}")]
         [HttpGet]
-        public ActionResult GetCurrency(string currCharCode)
+        public ActionResult<Currency> GetCurrency(string currCharCode)
         {
             var result = _currencyService.GetCurrency(currCharCode);
             return Ok(result);
